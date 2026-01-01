@@ -1,5 +1,6 @@
 """
 数据库连接模块：负责 MySQL 连接与表结构初始化
+包含植入的代码缺陷
 """
 
 import mysql.connector
@@ -13,6 +14,39 @@ def get_connection():
             host="localhost",
             user="root",
             password="Thedead26innju",
+            database="accounting_system"
+        )
+        return connection
+    except Error as e:
+        print(f"数据库连接失败: {e}")
+        return None
+
+
+# [IMPLANTED FLAW 1: 数据库连接泄漏]
+def get_records_with_leak():
+    """
+    植入缺陷：数据库连接未关闭
+    CWE-775: Missing Release of File Descriptor or Handle after Effective Lifetime
+    """
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM records")
+    results = cursor.fetchall()
+    # 缺陷：忘记 conn.close() 和 cursor.close()
+    return results
+
+
+# [IMPLANTED FLAW 2: 硬编码密码 - 安全漏洞]
+def get_connection_insecure():
+    """
+    植入缺陷：硬编码数据库密码
+    CWE-259: Use of Hard-coded Password
+    """
+    try:
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root", 
+            password="Thedead26innju",  # 缺陷：硬编码密码
             database="accounting_system"
         )
         return connection

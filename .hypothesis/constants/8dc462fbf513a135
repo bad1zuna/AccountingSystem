@@ -1,0 +1,4 @@
+# file: D:\NJU\Course\软件工程\实验4_231220039_陈羽轩\Accounting_system\code\utils.py
+# hypothesis_version: 6.148.9
+
+['%Y-%m-%d', '%Y-%m-%d %H:%M:%S', 'ERROR', 'INFO', 'api_key', 'api_secret', 'endpoint', 'y', 'yes', '日期格式错误，应为 YYYY-MM-DD', '是否确认退出？(y/n): ', '程序已退出，再见！', '金额输入无效，请输入正数。']

@@ -1,0 +1,4 @@
+# file: D:\NJU\Course\软件工程\实验4_231220039_陈羽轩\Accounting_system\code\statistics.py
+# hypothesis_version: 6.148.9
+
+[0.01, 0.7, 0.8, ' AND ', '#4CAF50', '#FF6B6B', '--', '1=1', 'Amount (¥)', 'DejaVu Sans', 'Expense', 'Expense Amount (¥)', 'Income', 'Income vs Expense', 'Microsoft', 'Microsoft YaHei', 'Month', 'SimHei', 'WARNING', 'YEAR(date) = %s', 'YEAR(r.date) = %s', 'YaHei', 'axes.unicode_minus', 'bold', 'bottom', 'category', 'center', 'equal', 'expense', 'font.family', 'font.sans-serif', 'fontsize', 'income', 'month', 'monthly_expense', 'o', 'offset points', "r.type = 'expense'", 'sans-serif', 'total', 'type', '支出分类比例', '支出金额 (元)', '收入支出对比', '暂无对比数据生成图表', '暂无支出数据生成饼图', '暂无趋势数据生成折线图', '月份', '月度支出趋势', '金额 (元)']

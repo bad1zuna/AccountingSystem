@@ -1,0 +1,4 @@
+# file: D:\NJU\Course\软件工程\实验4_231220039_陈羽轩\Accounting_system\code\flawed_functions.py
+# hypothesis_version: 6.148.9
+
+[0.1, 100, 'balance.txt', 'r', 'temporary data', 'utf-8', 'w', '金额必须大于0']

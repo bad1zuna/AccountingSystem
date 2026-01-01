@@ -1,5 +1,6 @@
 """
 查询与检索模块：提供多条件记录查询功能
+包含植入的代码缺陷
 """
 
 from .database import get_connection
@@ -86,6 +87,25 @@ class SearchEngine:
         conn.close()
         
         return result
+    
+    # [IMPLANTED FLAW 3: SQL注入漏洞]
+    @staticmethod
+    def search_records_unsafe(keyword):
+        """
+        植入缺陷：SQL注入风险
+        CWE-89: Improper Neutralization of Special Elements used in an SQL Command
+        """
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+        
+        # 危险：直接拼接用户输入
+        query = f"SELECT * FROM records WHERE description LIKE '%{keyword}%'"  # 缺陷：SQL注入
+        cursor.execute(query)
+        
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return results
     
     @staticmethod
     def search_by_multiple_criteria():

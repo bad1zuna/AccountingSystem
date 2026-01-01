@@ -1,5 +1,6 @@
 """
 工具模块：日志输出、数据格式化与输入校验
+包含植入的代码缺陷
 """
 
 from datetime import datetime
@@ -44,3 +45,34 @@ def parse_date(date_str: str):
     except ValueError:
         log("日期格式错误，应为 YYYY-MM-DD", "ERROR")
         return None
+
+
+# [IMPLANTED FLAW 4: 命令注入漏洞]
+def backup_data_unsafe(backup_dir):
+    """
+    植入缺陷：命令注入风险
+    CWE-78: Improper Neutralization of Special Elements used in an OS Command
+    """
+    import os
+    import subprocess
+    
+    # 危险：直接使用用户输入构造命令
+    command = f"cp -r data/ {backup_dir}"  # 缺陷：命令注入
+    os.system(command)  # 如果backup_dir是恶意输入，可能执行任意命令
+    
+    # 另一种危险用法
+    subprocess.call(f"backup.py --dir {backup_dir}", shell=True)  # 缺陷：shell注入
+
+
+# [IMPLANTED FLAW 5: 硬编码API密钥]
+def get_api_config():
+    """
+    植入缺陷：硬编码敏感信息
+    CWE-798: Use of Hard-coded Credentials
+    """
+    config = {
+        "api_key": "sk-live-1234567890abcdefghijklmn",  # 缺陷：硬编码API密钥
+        "api_secret": "secret_1234567890abcdef",  # 缺陷：硬编码密钥
+        "endpoint": "https://api.example.com/v1"
+    }
+    return config

@@ -1,0 +1,509 @@
+{
+  "errors": [],
+  "generated_at": "2025-11-29T08:21:37Z",
+  "metrics": {
+    "_totals": {
+      "CONFIDENCE.HIGH": 9,
+      "CONFIDENCE.LOW": 4,
+      "CONFIDENCE.MEDIUM": 3,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 3,
+      "SEVERITY.LOW": 6,
+      "SEVERITY.MEDIUM": 7,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1121,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 24,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/budget.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 186,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/category.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 43,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/database.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 2,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 2,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 82,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/flawed_functions.py": {
+      "CONFIDENCE.HIGH": 6,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 1,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 87,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/main.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 185,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/record.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 107,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/search.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 2,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 174,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/statistics.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 2,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 176,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "code/utils.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 2,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 57,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "12     try:\n13         connection = mysql.connector.connect(\n14             host=\"localhost\",\n15             user=\"root\",\n16             password=\"Thedead26innju\",\n17             database=\"accounting_system\"\n18         )\n19         return connection\n",
+      "col_offset": 21,
+      "end_col_offset": 9,
+      "filename": "code/database.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: 'Thedead26innju'",
+      "line_number": 13,
+      "line_range": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b106_hardcoded_password_funcarg.html",
+      "test_id": "B106",
+      "test_name": "hardcoded_password_funcarg"
+    },
+    {
+      "code": "45     try:\n46         connection = mysql.connector.connect(\n47             host=\"localhost\",\n48             user=\"root\", \n49             password=\"Thedead26innju\",  # \u7f3a\u9677\uff1a\u786c\u7f16\u7801\u5bc6\u7801\n50             database=\"accounting_system\"\n51         )\n52         return connection\n",
+      "col_offset": 21,
+      "end_col_offset": 9,
+      "filename": "code/database.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: 'Thedead26innju'",
+      "line_number": 46,
+      "line_range": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b106_hardcoded_password_funcarg.html",
+      "test_id": "B106",
+      "test_name": "hardcoded_password_funcarg"
+    },
+    {
+      "code": "5 \n6 import pickle\n7 import os\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 6,
+      "line_range": [
+        6
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "7 import os\n8 import subprocess\n9 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 8,
+      "line_range": [
+        8
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18     # \u5371\u9669\uff1a\u76f4\u63a5\u53cd\u5e8f\u5217\u5316\u4e0d\u53ef\u4fe1\u6570\u636e\n19     user_obj = pickle.loads(serialized_data)  # \u7f3a\u9677\uff1a\u53ef\u80fd\u6267\u884c\u4efb\u610f\u4ee3\u7801\n20     return user_obj\n",
+      "col_offset": 15,
+      "end_col_offset": 44,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "60     # \u5371\u9669\uff1a\u9884\u6d4b\u6027\u4e34\u65f6\u6587\u4ef6\u540d\n61     temp_path = \"/tmp/myapp_temp_file.txt\"  # \u7f3a\u9677\uff1a\u56fa\u5b9a\u4e34\u65f6\u6587\u4ef6\u8def\u5f84\n62     with open(temp_path, 'w') as f:\n",
+      "col_offset": 16,
+      "end_col_offset": 42,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 377,
+        "link": "https://cwe.mitre.org/data/definitions/377.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Probable insecure usage of temp file/directory.",
+      "line_number": 61,
+      "line_range": [
+        61
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html",
+      "test_id": "B108",
+      "test_name": "hardcoded_tmp_directory"
+    },
+    {
+      "code": "78         return True\n79     except Exception:  # \u7f3a\u9677\uff1a\u8fc7\u4e8e\u5bbd\u6cdb\u7684\u5f02\u5e38\u6355\u83b7\u4e14\u65e0\u5904\u7406\n80         # \u9759\u9ed8\u5931\u8d25\uff0c\u4e0d\u8bb0\u5f55\u4e5f\u4e0d\u901a\u77e5\n81         pass\n82     return False\n",
+      "col_offset": 4,
+      "end_col_offset": 12,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 79,
+      "line_range": [
+        79,
+        80,
+        81
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "92     # \u5371\u9669\uff1a\u4f7f\u7528MD5\uff0c\u5df2\u77e5\u7684\u4e0d\u5b89\u5168\u7b97\u6cd5\n93     return hashlib.md5(password.encode()).hexdigest()  # \u7f3a\u9677\uff1a\u4e0d\u5b89\u5168\u7684\u54c8\u5e0c\n94 \n",
+      "col_offset": 11,
+      "end_col_offset": 41,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 93,
+      "line_range": [
+        93
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "125     # \u5371\u9669\uff1a\u76f4\u63a5eval\u7528\u6237\u8f93\u5165\n126     result = eval(expression)  # \u7f3a\u9677\uff1a\u4ee3\u7801\u6ce8\u5165\n127     return result\n",
+      "col_offset": 13,
+      "end_col_offset": 29,
+      "filename": "code/flawed_functions.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Use of possibly insecure function - consider using safer ast.literal_eval.",
+      "line_number": 126,
+      "line_range": [
+        126
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b307-eval",
+      "test_id": "B307",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "72         # \u6267\u884c\u67e5\u8be2\n73         query = f\"\"\"\n74             SELECT \n75                 r.id, r.type, r.amount, \n76                 COALESCE(c.name, '\u672a\u5206\u7c7b') as category,\n77                 r.description, r.date\n78             FROM records r\n79             LEFT JOIN categories c ON r.category_id = c.id\n80             WHERE {where_clause}\n81             ORDER BY {sort_field} {sort_direction}\n82         \"\"\"\n83         \n",
+      "col_offset": 20,
+      "end_col_offset": 18,
+      "filename": "code/search.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 73,
+      "line_range": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "101         # \u5371\u9669\uff1a\u76f4\u63a5\u62fc\u63a5\u7528\u6237\u8f93\u5165\n102         query = f\"SELECT * FROM records WHERE description LIKE '%{keyword}%'\"  # \u7f3a\u9677\uff1aSQL\u6ce8\u5165\n103         cursor.execute(query)\n",
+      "col_offset": 18,
+      "end_col_offset": 65,
+      "filename": "code/search.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 102,
+      "line_range": [
+        102
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "53         \n54         query = f\"\"\"\n55             SELECT \n56                 COALESCE(c.name, '\u672a\u5206\u7c7b') as category, \n57                 SUM(r.amount) as total\n58             FROM records r\n59             LEFT JOIN categories c ON r.category_id = c.id\n60             WHERE {where_clause}\n61             GROUP BY c.name\n62             HAVING total > 0\n63             ORDER BY total DESC\n64         \"\"\"\n65         \n",
+      "col_offset": 20,
+      "end_col_offset": 18,
+      "filename": "code/statistics.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 54,
+      "line_range": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "112         \n113         query = f\"\"\"\n114             SELECT \n115                 type,\n116                 SUM(amount) as total\n117             FROM records \n118             WHERE {where_clause}\n119             GROUP BY type\n120         \"\"\"\n121         \n",
+      "col_offset": 20,
+      "end_col_offset": 18,
+      "filename": "code/statistics.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 113,
+      "line_range": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "56     import os\n57     import subprocess\n58     \n",
+      "col_offset": 4,
+      "end_col_offset": 21,
+      "filename": "code/utils.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 57,
+      "line_range": [
+        57
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "60     command = f\"cp -r data/ {backup_dir}\"  # \u7f3a\u9677\uff1a\u547d\u4ee4\u6ce8\u5165\n61     os.system(command)  # \u5982\u679cbackup_dir\u662f\u6076\u610f\u8f93\u5165\uff0c\u53ef\u80fd\u6267\u884c\u4efb\u610f\u547d\u4ee4\n62     \n",
+      "col_offset": 4,
+      "end_col_offset": 22,
+      "filename": "code/utils.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+      "line_number": 61,
+      "line_range": [
+        61
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b605_start_process_with_a_shell.html",
+      "test_id": "B605",
+      "test_name": "start_process_with_a_shell"
+    },
+    {
+      "code": "63     # \u53e6\u4e00\u79cd\u5371\u9669\u7528\u6cd5\n64     subprocess.call(f\"backup.py --dir {backup_dir}\", shell=True)  # \u7f3a\u9677\uff1ashell\u6ce8\u5165\n65 \n",
+      "col_offset": 4,
+      "end_col_offset": 64,
+      "filename": "code/utils.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "subprocess call with shell=True identified, security issue.",
+      "line_number": 64,
+      "line_range": [
+        64
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.2/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+      "test_id": "B602",
+      "test_name": "subprocess_popen_with_shell_equals_true"
+    }
+  ]
+}

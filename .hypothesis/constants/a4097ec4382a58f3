@@ -1,0 +1,4 @@
+# file: D:\NJU\Course\软件工程\实验4_231220039_陈羽轩\Accounting_system\code\search.py
+# hypothesis_version: 6.148.9
+
+['\n=== 多条件搜索 ===', '\n可选分类：', ' AND ', '0', '0. 不限制分类', '1=1', 'ASC', 'DESC', 'ERROR', 'INFO', 'amount', 'c.name', 'c.name = %s', 'category', 'date', 'expense', 'income', 'name', 'r.amount', 'r.amount <= %s', 'r.amount >= %s', 'r.date', 'r.date <= %s', 'r.date >= %s', 'r.type', 'r.type = %s', 'type', '关键字搜索：', '开始日期 (YYYY-MM-DD)：', '搜索结果', '无效的分类编号', '最大金额：', '最小金额：', '未找到匹配的记录', '结束日期 (YYYY-MM-DD)：', '请输入搜索条件（留空表示不限制）：', '请输入有效数字', '请选择分类编号：', '金额格式错误']

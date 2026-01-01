@@ -1,0 +1,219 @@
+Run started:2025-11-29 08:21:37.825615+00:00
+
+Test results:
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'Thedead26innju'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b106_hardcoded_password_funcarg.html
+   Location: code/database.py:13:21
+12	    try:
+13	        connection = mysql.connector.connect(
+14	            host="localhost",
+15	            user="root",
+16	            password="Thedead26innju",
+17	            database="accounting_system"
+18	        )
+19	        return connection
+
+--------------------------------------------------
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'Thedead26innju'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b106_hardcoded_password_funcarg.html
+   Location: code/database.py:46:21
+45	    try:
+46	        connection = mysql.connector.connect(
+47	            host="localhost",
+48	            user="root", 
+49	            password="Thedead26innju",  # 缺陷：硬编码密码
+50	            database="accounting_system"
+51	        )
+52	        return connection
+
+--------------------------------------------------
+>> Issue: [B403:blacklist] Consider possible security implications associated with pickle module.
+   Severity: Low   Confidence: High
+   CWE: CWE-502 (https://cwe.mitre.org/data/definitions/502.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b403-import-pickle
+   Location: code/flawed_functions.py:6:0
+5	
+6	import pickle
+7	import os
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: code/flawed_functions.py:8:0
+7	import os
+8	import subprocess
+9	import tempfile
+
+--------------------------------------------------
+>> Issue: [B301:blacklist] Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.
+   Severity: Medium   Confidence: High
+   CWE: CWE-502 (https://cwe.mitre.org/data/definitions/502.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b301-pickle
+   Location: code/flawed_functions.py:19:15
+18	    # 危险：直接反序列化不可信数据
+19	    user_obj = pickle.loads(serialized_data)  # 缺陷：可能执行任意代码
+20	    return user_obj
+
+--------------------------------------------------
+>> Issue: [B108:hardcoded_tmp_directory] Probable insecure usage of temp file/directory.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-377 (https://cwe.mitre.org/data/definitions/377.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b108_hardcoded_tmp_directory.html
+   Location: code/flawed_functions.py:61:16
+60	    # 危险：预测性临时文件名
+61	    temp_path = "/tmp/myapp_temp_file.txt"  # 缺陷：固定临时文件路径
+62	    with open(temp_path, 'w') as f:
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b110_try_except_pass.html
+   Location: code/flawed_functions.py:79:4
+78	        return True
+79	    except Exception:  # 缺陷：过于宽泛的异常捕获且无处理
+80	        # 静默失败，不记录也不通知
+81	        pass
+82	    return False
+
+--------------------------------------------------
+>> Issue: [B324:hashlib] Use of weak MD5 hash for security. Consider usedforsecurity=False
+   Severity: High   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b324_hashlib.html
+   Location: code/flawed_functions.py:93:11
+92	    # 危险：使用MD5，已知的不安全算法
+93	    return hashlib.md5(password.encode()).hexdigest()  # 缺陷：不安全的哈希
+94	
+
+--------------------------------------------------
+>> Issue: [B307:blacklist] Use of possibly insecure function - consider using safer ast.literal_eval.
+   Severity: Medium   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_calls.html#b307-eval
+   Location: code/flawed_functions.py:126:13
+125	    # 危险：直接eval用户输入
+126	    result = eval(expression)  # 缺陷：代码注入
+127	    return result
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html
+   Location: code/search.py:73:20
+72	        # 执行查询
+73	        query = f"""
+74	            SELECT 
+75	                r.id, r.type, r.amount, 
+76	                COALESCE(c.name, '未分类') as category,
+77	                r.description, r.date
+78	            FROM records r
+79	            LEFT JOIN categories c ON r.category_id = c.id
+80	            WHERE {where_clause}
+81	            ORDER BY {sort_field} {sort_direction}
+82	        """
+83	        
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html
+   Location: code/search.py:102:18
+101	        # 危险：直接拼接用户输入
+102	        query = f"SELECT * FROM records WHERE description LIKE '%{keyword}%'"  # 缺陷：SQL注入
+103	        cursor.execute(query)
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html
+   Location: code/statistics.py:54:20
+53	        
+54	        query = f"""
+55	            SELECT 
+56	                COALESCE(c.name, '未分类') as category, 
+57	                SUM(r.amount) as total
+58	            FROM records r
+59	            LEFT JOIN categories c ON r.category_id = c.id
+60	            WHERE {where_clause}
+61	            GROUP BY c.name
+62	            HAVING total > 0
+63	            ORDER BY total DESC
+64	        """
+65	        
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b608_hardcoded_sql_expressions.html
+   Location: code/statistics.py:113:20
+112	        
+113	        query = f"""
+114	            SELECT 
+115	                type,
+116	                SUM(amount) as total
+117	            FROM records 
+118	            WHERE {where_clause}
+119	            GROUP BY type
+120	        """
+121	        
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: code/utils.py:57:4
+56	    import os
+57	    import subprocess
+58	    
+
+--------------------------------------------------
+>> Issue: [B605:start_process_with_a_shell] Starting a process with a shell, possible injection detected, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b605_start_process_with_a_shell.html
+   Location: code/utils.py:61:4
+60	    command = f"cp -r data/ {backup_dir}"  # 缺陷：命令注入
+61	    os.system(command)  # 如果backup_dir是恶意输入，可能执行任意命令
+62	    
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.2/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: code/utils.py:64:4
+63	    # 另一种危险用法
+64	    subprocess.call(f"backup.py --dir {backup_dir}", shell=True)  # 缺陷：shell注入
+65	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 1121
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 6
+		Medium: 7
+		High: 3
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 4
+		Medium: 3
+		High: 9
+Files skipped (0):
