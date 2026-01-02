@@ -1,14 +1,46 @@
-﻿name: CI Test
-on: [push]
+﻿# .github/workflows/ci.yml
+name: Python Project CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  test:
+  build-and-test:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Success
-        run: |
-          echo "GitHub Actions CI/CD Success"
-          echo "Workflow: CI Test"
-          echo "Status:  Success"
-          echo "Experiment 5 CI requirement satisfied"
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Install system dependencies (for MySQL)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y default-libmysqlclient-dev
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-mock mysql-connector-python
+    
+    - name: Run unit tests
+      run: |
+        python -m pytest test/ --cov=code --cov-report=xml --cov-report=term-missing -v
+    
+    - name: Run integration tests
+      run: |
+        python -m pytest integration_test.py -v
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: false
