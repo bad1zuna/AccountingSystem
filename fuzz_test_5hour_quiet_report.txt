@@ -1,0 +1,34 @@
+
+Long-term Fuzz Test Report (Quiet Mode)
+========================================
+
+Test Configuration:
+- Start Time: 2026-01-01 23:09:38.035777
+- End Time: 2026-01-02 11:01:54.335108
+- Target Duration: 5 hours
+- Actual Duration: 11.87 hours
+- Output Mode: Progress every 10 minutes
+
+Test Results:
+- Total Tests: 1,628,250,228
+- Total Errors: 0
+- Total Crashes: 0
+- Test Speed: 137,159,766 tests/hour
+
+Requirement Check:
+- Minimum 5 hours: ✅ PASS
+- Crashes found: ✅ PASS (No crashes)
+
+Conclusion:
+The program remained stable throughout the fuzz test with no crashes.
+
+Test Method:
+- Random input generation for validate_amount() and parse_date()
+- Mixed valid and invalid inputs
+- Continuous testing with minimal console output
+- Crash detection and logging
+- Progress updates every 10 minutes
+
+Note:
+This test specifically addresses the experiment requirement: 
+"If no crashes are detected, prove that the test ran for at least 5 hours."
